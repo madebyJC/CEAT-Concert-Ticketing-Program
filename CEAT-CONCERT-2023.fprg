@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="janns"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-01-15 03:51:18 AM"/>
+        <attribute name="created" value="amFubnM7REVTS1RPUC1LSE00NUpCOzIwMjMtMDEtMDg7MDQ6NDc6NTkgQU07Mjg2NA=="/>
+        <attribute name="edited" value="Unl6ZW4gMyAzMjAwO0dBTUlORy1QQzsyMDIzLTAxLTA5OzA1OjEyOjQyIHBtOzM7MjkyNA=="/>
+        <attribute name="edited" value="amFubnM7REVTS1RPUC1LSE00NUpCOzIwMjMtMDEtMTU7MDM6NTE6MTggQU07OTsyOTY3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Programming and Logic Finals"/>
+            <comment text="Delgado, Kenneth&#13;&#10;Paredes, Jan Carlo&#13;&#10;Legaspi, Justin"/>
+            <comment text="The program created by Kenneth Delgado, Jan Carlo Paredes, Justin Legaspi is CEAT Concert Ticket Registration Program. The program is used to register the highschool and college student of De La Salle University &#8211; Dasmari&#241;as to reserve tickets and slots and be part of the CEAT Concert 2023. The program has four segments: introduction, registration, reservation, and payment."/>
+            <declare name="inputConfirm, inputCEAT, inputEdit, inputTicketEdit" type="String" array="False" size=""/>
+            <declare name="Name, Age, StuNo, ColDep, ProgSec" type="String" array="False" size=""/>
+            <declare name="loop, inputTicket, inputPayment, ticketPrice, ticketPayment" type="Integer" array="False" size=""/>
+            <declare name="userStatus" type="Boolean" array="False" size=""/>
+            <comment text="Introduction "/>
+            <output expression="&quot;========================================================================================================================================&quot;" newline="True"/>
+            <output expression="&quot;Welcome to CEAT CONCERT 2023!&quot;" newline="True"/>
+            <output expression="&quot;On December 15, 2022, the College of Engineering, Architecture, and Technology Student Government (CEATSG), invites everyone to come at Ugnayang La Salle (ULS) to create the best year end experience to this school year that would pave way to the rebirth of dreams by illuminating the colors of blazing passions.&quot;" newline="True"/>
+            <output expression="&quot;At the Ugnayang La Salle (ULS) of De La Salle University-Dasmari&#241;as, catch your favorite artists as they reveal all the magic tricks behind illuminating the colors of blazing passions.&quot;" newline="True"/>
+            <output expression="&quot;========================================================================================================================================&quot;" newline="True"/>
+            <output expression="&quot;Kindly type 'Confirm' to start the ticket registration&quot;" newline="True"/>
+            <input variable="inputConfirm"/>
+            <if expression="inputConfirm == &quot;Confirm&quot;">
+                <then>
+                    <comment text="Registration"/>
+                    <comment text="The while loop is used in the Registration section to specify the conditions of registration to be accurate and comprehensive. The program will prompt the user for confirmation before being classified as &quot;NON-CEAT&quot; or &quot;CEAT.&quot; The program will request the student's information depending on the selection of &quot;NON-CEAT&quot; or &quot;CEAT&quot; and will call the function to request input and display the student's details. The user will be required to enter &quot;Confirm&quot; or &quot;Edit&quot; to confirm their student information. If the user desires to modify the student details, the user should enter &quot;Edit&quot; instead of &quot;Confirm.&quot;"/>
+                    <assign variable="inputEdit" expression="&quot;Edit&quot;"/>
+                    <while expression="inputEdit = &quot;Edit&quot;">
+                        <output expression="&quot;Welcome to the CEAT Ticket Registration Program!&quot;" newline="True"/>
+                        <output expression="&quot;To begin the Ticket Registration, type 'CEAT' for CEAT Students or type 'NON CEAT' for NON-CEAT and Highschool Students (STRICTLY NO OUTSIDERS - ONLY ALUMNI ARE ALLOWED).&quot;" newline="True"/>
+                        <input variable="inputCEAT"/>
+                        <if expression="inputCEAT == &quot;CEAT&quot; || inputCEAT == &quot;NON CEAT&quot;">
+                            <then>
+                                <if expression="inputCEAT == &quot;CEAT&quot;">
+                                    <then>
+                                        <call expression="CEAT()"/>
+                                    </then>
+                                    <else>
+                                        <call expression="NONCEAT()"/>
+                                    </else>
+                                </if>
+                                <output expression="&quot;Type 'Confirm' to confirm your student details or type 'Edit' to edit your student details.&quot;" newline="True"/>
+                                <input variable="inputEdit"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Invalid Input!&quot;" newline="True"/>
+                                <assign variable="inputEdit" expression="&quot;Edit&quot;"/>
+                            </else>
+                        </if>
+                    </while>
+                    <comment text="Reservation"/>
+                    <comment text="The reservation section of the program allows the user to reserve tickets. The program will prompt the user to enter the quantity of tickets they want to buy. However, the user should only be able to buy a maximum of five tickets. By executing a function, the program will also show the user the entire amount and cost of the ticket. To confirm the reservation and number of tickets purchased, the user will be asked to enter &quot;Confirm&quot; or &quot;Edit.&quot; If the user wishes to adjust the number of tickets, they should choose &quot;Edit&quot; rather than &quot;Confirm.&quot;"/>
+                    <assign variable="inputTicketEdit" expression="&quot;Edit&quot;"/>
+                    <while expression="inputTicketEdit = &quot;Edit&quot;">
+                        <output expression="&quot;CEAT CONCERT TICKET REGISTRATION RESERVATION&quot;" newline="True"/>
+                        <output expression="&quot;The CEAT Concert Ticket cost &#8369; 250.00 (Only a maximum of 4 CEAT Concert Tickets can be purchased).&quot;" newline="True"/>
+                        <assign variable="inputTicket" expression="0"/>
+                        <while expression="inputTicket &lt; 1 || inputTicket &gt; 4">
+                            <output expression="&quot;Enter the number of ticket to be purchased (Only a maximum of 4 CEAT Concert Tickets can be purchased): &quot;" newline="True"/>
+                            <input variable="inputTicket"/>
+                        </while>
+                        <output expression="&quot;Total of &quot; &amp; inputTicket &amp;  &quot; CEAT Concert Ticket/s to be reserved.&quot;" newline="True"/>
+                        <assign variable="ticketPrice" expression="TicketPrice(inputTicket)"/>
+                        <output expression="&quot;Total Cost: &#8369;&quot; &amp; ticketPrice" newline="True"/>
+                        <output expression="&quot;Type 'Confirm' to proceed with payment of the ticket/s. If not, type 'Edit' to modify the number of tickets to be purchased.&quot;" newline="True"/>
+                        <input variable="inputTicketEdit"/>
+                    </while>
+                    <comment text="Payment"/>
+                    <comment text="The payment section of the program employs a while loop to confirm and finalize the user's slot and ticket reservation. The user will be required to enter the amount of money to be paid. If the entered quantity of money is insufficient, the program will reject the payment and rerun the while loop. If the amount is equivalent to or exceeds the price of the ticket, the program will deliver the change by calling a function to confirm the payment and reservation of the ticket. In addition, the application will show the unique serial number of the ticket that the user will require to obtain the ticket from the designated area at De La Salle University - Dasmari&#241;as."/>
+                    <output expression="&quot;CEAT TICKET CONCERT PAYMENT&quot;" newline="True"/>
+                    <assign variable="userStatus" expression="True"/>
+                    <while expression="userStatus = True">
+                        <output expression="&quot;Total Cost: &#8369;&quot; &amp; TicketPrice(inputTicket)" newline="True"/>
+                        <output expression="&quot;For full reservation of the CEAT concert ticket, enter your bills for the payment: &quot;" newline="True"/>
+                        <input variable="inputPayment"/>
+                        <if expression="inputPayment &gt;= ticketPrice">
+                            <then>
+                                <assign variable="ticketPayment" expression="TicketPayment(inputPayment, ticketPrice)"/>
+                                <assign variable="userStatus" expression="False"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;Your payment is not enought for the ticket&quot;" newline="True"/>
+                                <assign variable="userStatus" expression="True"/>
+                            </else>
+                        </if>
+                    </while>
+                    <output expression="&quot;Your payment is successful!&quot;" newline="True"/>
+                    <output expression="&quot;Change: &quot; &amp; ticketPayment" newline="True"/>
+                    <output expression="&quot;========================================================================================================================================&quot;" newline="True"/>
+                    <output expression="&quot;Here are your ticket unique serial code:&quot;" newline="True"/>
+                    <comment text="The For loop generates one random number from 1000000 to 1999999. The random number will be the unique serial code of the CEAT Concert ticket."/>
+                    <for variable="loop" start="1" end="inputTicket" direction="inc" step="1">
+                        <call expression="SerialCode()"/>
+                    </for>
+                    <output expression="&quot;CEAT CONCERT TICKET CLAIMING INFORMATION&quot;" newline="True"/>
+                    <output expression="&quot;The Certificate of Registration and ticket's serial codes needs be presented upon the claiming area of MTH115 to claim the CEAT Concert Ticket.&quot;" newline="True"/>
+                    <output expression="&quot;========================================================================================================================================&quot;" newline="True"/>
+                    <output expression="&quot;THANK YOU FOR PURCHASING THE CEAT CONCERT TICKET 2023, SO  SEE YOU ON THE 15TH!&quot;" newline="True"/>
+                    <output expression="&quot;ANIMO LA SALLE!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;The Ticket Registration Program ended!&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="CEAT" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="The function CEAT asks for the input of CEAT students' details, including name, age, student number, and course/section. The function will display every student detail of the user for confirmation."/>
+            <declare name="Name, Age, StuNo, ColDep, ProgSec" type="String" array="False" size=""/>
+            <output expression="&quot;Enter your student details: &quot;" newline="True"/>
+            <output expression="&quot;Name (Surname, First Name M.I.): &quot;" newline="True"/>
+            <input variable="Name"/>
+            <output expression="&quot;Age: &quot;" newline="True"/>
+            <input variable="Age"/>
+            <output expression="&quot;Student Number: &quot;" newline="True"/>
+            <input variable="StuNo"/>
+            <output expression="&quot;Course/Section (Ex. CPE11): &quot;" newline="True"/>
+            <input variable="ProgSec"/>
+            <output expression="&quot;Review your submitted student details: &quot;" newline="True"/>
+            <output expression="&quot;Name: &quot; &amp; Name" newline="True"/>
+            <output expression="&quot;Age: &quot; &amp; Age" newline="True"/>
+            <output expression="&quot;Student Number: &quot; &amp; StuNo" newline="True"/>
+            <output expression="&quot;Course/Section: &quot; &amp; ProgSec" newline="True"/>
+        </body>
+    </function>
+    <function name="NONCEAT" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="The function NONCEAT asks for the input of NON-CEAT students' details, including name, age, student number, college department/strand, and course/section. The function will display every student detail of the user for confirmation."/>
+            <declare name="Name, Age, StuNo, ColDep, ProgSec" type="String" array="False" size=""/>
+            <output expression="&quot;Enter your student details: &quot;" newline="True"/>
+            <output expression="&quot;Name (Surname, First Name M.I.): &quot;" newline="True"/>
+            <input variable="Name"/>
+            <output expression="&quot;Age: &quot;" newline="True"/>
+            <input variable="Age"/>
+            <output expression="&quot;Student Number: &quot;" newline="True"/>
+            <input variable="StuNo"/>
+            <output expression="&quot;College Department/Strand: &quot;" newline="True"/>
+            <input variable="ColDep"/>
+            <output expression="&quot;Course/Section (Ex. CPE11): &quot;" newline="True"/>
+            <input variable="ProgSec"/>
+            <output expression="&quot;Review your submitted student details: &quot;" newline="True"/>
+            <output expression="&quot;Name: &quot; &amp; Name" newline="True"/>
+            <output expression="&quot;Age: &quot; &amp; Age" newline="True"/>
+            <output expression="&quot;Student Number: &quot; &amp; StuNo" newline="True"/>
+            <output expression="&quot;College Department/Strand: &quot; &amp; ColDep" newline="True"/>
+            <output expression="&quot;Course/Section: &quot; &amp; ProgSec" newline="True"/>
+        </body>
+    </function>
+    <function name="SerialCode" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="The function SerialCode generates a random number from 100000 to 199999 and will be stored in the result variable, and the function will return the result variable in the Main. The generated number will serve as a unique serial code for the CEAT Concert Ticket."/>
+            <declare name="ticketSerialCode" type="Integer" array="False" size=""/>
+            <assign variable="ticketSerialCode" expression="random(1000000) + 999999"/>
+            <output expression="ticketSerialCode" newline="True"/>
+        </body>
+    </function>
+    <function name="TicketPayment" type="Real" variable="result">
+        <parameters>
+            <parameter name="Payment" type="Real" array="False"/>
+            <parameter name="Price" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <comment text="The function TicketPayment process the two variable: Payment and Price. The function will get the difference between the Payment and Price and will be stored in the variable result (result = Payment - Price). The function will return the variable result in the Main."/>
+            <declare name="result" type="Real" array="False" size=""/>
+            <assign variable="result" expression="Payment - Price"/>
+        </body>
+    </function>
+    <function name="TicketPrice" type="Real" variable="result">
+        <parameters>
+            <parameter name="inputTicket" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <comment text="The function TicketPrice is used to calculate the total price of the CEAT Concert ticket by multiplying the ticket cost and the number of tickets (result = ticket * inputTicket). The function will store the variable in the result variable and will be returned the variable result in the Main"/>
+            <declare name="ticket, result" type="Integer" array="False" size=""/>
+            <assign variable="ticket" expression="250"/>
+            <assign variable="result" expression="ticket * inputTicket"/>
+        </body>
+    </function>
+</flowgorithm>
